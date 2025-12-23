@@ -27,7 +27,8 @@ print(c)
 # Python is dynamically typed, so variables can change type.
 # Use triple quotes ('''...''' ) or ( """...""") for strings that
 # span multiple lines. Newlines are preserved.
-x = "Hello World"  # string, Ordered Collection(Elements have positions (indexes))
+# string, Ordered Collection(Elements have positions (indexes))
+x = "Hello World"
 y = """Hello
 World"""
 
@@ -326,3 +327,11 @@ def calc(x, y):
 
 res = calc(3, 4)
 print(res)
+
+# Dictionary comprehension
+# syntax new_dict = {key_expression: value_expression for item in iterable [if condition]}
+keys = ['apple', 'banana', 'cherry']
+values = [1, 2, 3]
+fruit_dict = {k: v for k, v in zip(keys, values)}
+print(fruit_dict)
+# Output: {'apple': 1, 'banana': 2, 'cherry': 3}
