@@ -330,7 +330,7 @@ print(res)
 
 # Dictionary comprehension
 # syntax new_dict = {key_expression: value_expression for item in iterable [if condition]}
-keys = ['apple', 'banana', 'cherry']
+keys = ["apple", "banana", "cherry"]
 values = [1, 2, 3]
 fruit_dict = {k: v for k, v in zip(keys, values)}
 print(fruit_dict)

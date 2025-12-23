@@ -10,9 +10,7 @@ def clean_csv_lines(file_obj):
 
 
 def print_annual_weather_report(annual_data):
-    print(
-        "Year  MAX Temp  MIN Temp  MAX Humidity  MIN Humidity"
-    )
+    print("Year  MAX Temp  MIN Temp  MAX Humidity  MIN Humidity")
     print("-" * 74)
 
     for year in sorted(annual_data):

@@ -22,12 +22,9 @@ def annual_max_min_temp(data_dir):
     # When you try to access a key that doesn’t exist,
     # instead of raising KeyError, it creates a default
     # value automatically.
-    yearly_data = defaultdict(lambda: {
-        "max_temp": [],
-        "min_temp": [],
-        "max_humidity": [],
-        "min_humidity": []
-    })
+    yearly_data = defaultdict(
+        lambda: {"max_temp": [], "min_temp": [], "max_humidity": [], "min_humidity": []}
+    )
 
     for file_name in os.listdir(data_dir):
         if not file_name.lower().endswith(".txt"):
@@ -64,16 +61,14 @@ def annual_max_min_temp(data_dir):
         # ternary operator syntax `value_if_true if condition else value_if_false`
         max_temp = max(data["max_temp"]) if data["max_temp"] else None
         min_temp = min(data["min_temp"]) if data["min_temp"] else None
-        max_humidity = max(data["max_humidity"]
-                           ) if data["max_humidity"] else None
-        min_humidity = min(data["min_humidity"]
-                           ) if data["min_humidity"] else None
+        max_humidity = max(data["max_humidity"]) if data["max_humidity"] else None
+        min_humidity = min(data["min_humidity"]) if data["min_humidity"] else None
 
         annual_stats[year] = {
             "max_temp": max_temp,
             "min_temp": min_temp,
             "max_humidity": max_humidity,
-            "min_humidity": min_humidity
+            "min_humidity": min_humidity,
         }
     return annual_stats
 
@@ -108,8 +103,10 @@ def hottest_day_each_year(data_dir):
                 formatted_date = f"{day}/{month}/{year}"
 
                 # Update hottest day if this temp is higher
-                if (hottest_days[year]["max_temp"] is None or
-                        temp > hottest_days[year]["max_temp"]):
+                if (
+                    hottest_days[year]["max_temp"] is None
+                    or temp > hottest_days[year]["max_temp"]
+                ):
                     hottest_days[year]["max_temp"] = temp
                     hottest_days[year]["date"] = formatted_date
 
@@ -123,16 +120,9 @@ def main():
         description="weatherman [report#] [data_dir]",
     )
 
-    parser.add_argument(
-        "report",
-        choices=["1", "2"],
-        help="Report number"
-    )
+    parser.add_argument("report", choices=["1", "2"], help="Report number")
 
-    parser.add_argument(
-        "data_dir",
-        help="Directory containing weather data files"
-    )
+    parser.add_argument("data_dir", help="Directory containing weather data files")
 
     args = parser.parse_args()
 
