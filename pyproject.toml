@@ -1,0 +1,6 @@
+[project]
+name = "weatherman"
+version = "0.1.0"
+
+[project.scripts]
+weatherman = "weatherman.cli:main"
