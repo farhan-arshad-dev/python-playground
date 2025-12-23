@@ -9,8 +9,8 @@ Welcome to **Python Playground**, a repository for experimenting, learning, and 
 - [Python Playground](#python-playground)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
-  - [Installation](#installation)
-    - [Virtual environment (if needed)](#virtual-environment-if-needed)
+    - [Installation](#installation)
+  - [Virtual environment (if needed)](#virtual-environment-if-needed)
     - [Check Code for PEP 8 Violations](#check-code-for-pep-8-violations)
     - [Auto-Format Code](#auto-format-code)
 
@@ -26,16 +26,15 @@ Welcome to **Python Playground**, a repository for experimenting, learning, and 
 
 ---
 
-## Installation
+### Installation
 
 1. **Clone the repository**
 ```bash
 git clone https://github.com/your-username/python-playground.git
 cd python-playground
+```
 
---- 
-
-### Virtual environment (if needed)
+## Virtual environment (if needed)
 - Create => `python -m venv playground`
 - Activate => `source playground/bin/activate` for MAC
 

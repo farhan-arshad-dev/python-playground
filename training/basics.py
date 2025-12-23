@@ -27,13 +27,23 @@ print(c)
 # Python is dynamically typed, so variables can change type.
 # Use triple quotes ('''...''' ) or ( """...""") for strings that
 # span multiple lines. Newlines are preserved.
-x = "Hello World"  # string, Ordered Collection(Elements have positions (indexes))
+# string, immutable, Ordered Collection(Elements have positions (indexes)),
+x = "Hello World"
 y = """Hello
 World"""
 
 print("Print Single line and multiline string")
 print(x)
 print(y)
+
+# Strgin Manipulation
+s = "Hello World"
+substring = s[1:8]  # Output: ello Wo
+reversed_s = s[::-1]  # Output: dlroW olleH
+
+s = "Python"
+first_char = s[0]  # Output: P
+last_char = s[-1]  # Output: n
 
 
 # Rule of thumb If changing a value creates a new object => it’s immutable
