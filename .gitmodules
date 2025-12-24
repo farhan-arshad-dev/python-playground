@@ -1,0 +1,3 @@
+[submodule "WeatherMan"]
+	path = WeatherMan
+	url = git@github.com:farhan-arshad-dev/WeatherMan.git
