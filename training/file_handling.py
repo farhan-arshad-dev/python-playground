@@ -1,3 +1,10 @@
+# Context Managers 
+# => in Python is an object that guarantees the automatic setup 
+# and teardown of resources, even if errors occur during execution.
+# This functionality is primarily used with the with statement to
+# manage resources like files, network connections, and database
+# sessions safely and efficiently. 
+# Why => Automatic Cleanup, Exception Safety, Cleaner, More Readable Code
 from contextlib import contextmanager
 
 f = open("hello.txt", "r")

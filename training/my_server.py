@@ -2,6 +2,18 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 class MyServer(BaseHTTPRequestHandler):
+
+    def _read_body(self):
+        content_length = int(self.headers.get("Content-Length", 0))
+        return self.rfile.read(content_length).decode("utf-8")
+
+    def _send_response(self, status=200, body="OK"):
+        self.send_response(status)
+        self.send_header("Content-Type", "text/plain")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body.encode())
+
     def do_GET(self):
         """
         Handle GET requests
@@ -11,34 +23,35 @@ class MyServer(BaseHTTPRequestHandler):
         print("Request headers:", self.headers)
 
         # Prepare Response
-        self.send_response(200)  # HTTP status code
-        self.send_header('Content-Type', 'text/plain')
-        self.send_header('X-Custom-Header', 'MyHeaderValue')
-        self.end_headers()
-
-        # Write response body
-        self.wfile.write(b"Hello from Python HTTP server!")
+        self._send_response(200, "{'status': 'Hello from Python HTTP server!'}")
 
     def do_POST(self):
         """
         Handle POST requests
         """
-        content_length = int(self.headers.get('Content-Length', 0))
-        post_data = self.rfile.read(content_length)
-        print("Received POST data:", post_data.decode('utf-8'))
+        post_data = self._read_body()
+        print("Received POST data:", post_data)
 
         # Response
-        self.send_response(201)
-        self.send_header('Content-Type', 'application/json')
-        self.end_headers()
-        response = b'{"status": "received"}'
-        self.wfile.write(response)
+        self._send_response(201, "{'status': 'received with post request'}")
+
+    def do_PUT(self):
+        body = self._read_body()
+        print("PUT body:", body)
+
+        self._send_response(200, "{'status': 'received with put request'}")
+
+    def do_PATCH(self):
+        body = self._read_body()
+        print("PATCH body:", body)
+
+        self._send_response(200, "{'status': 'received with patch request'}")
 
 
 def run(server_class=HTTPServer, handler_class=MyServer, port=8080):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
-    print(f'Server running on port {port}...')
+    print(f"Server running on port {port}...")
     httpd.serve_forever()
 
 

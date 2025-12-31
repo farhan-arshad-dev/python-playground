@@ -217,6 +217,8 @@ class Dog(ABC):  # Abstract Class
     def __init__(self, name):
         self.name = name
 
+    # A decorator is a function that wraps another function
+    # (Modify behavior of functions, Without changing their source code)
     @abstractmethod
     def sound(self):  # Abstract Method
         pass
